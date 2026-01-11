@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Apply Poppins but exclude TimelineJS */
+body {
+    font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Ensure TimelineJS icons work properly */
+.tl-slidenav-icon,
+.tl-icon,
+.tl-menubar-button,
+[class*="tl-icon"] {
+    font-family: 'tl-icons' !important;
+}
+
+/* Marquee animation for skills */
+.marquee-wrapper {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.marquee-wrapper:active {
+    cursor: grabbing;
+}
+
+.marquee-track {
+    will-change: transform;
+}
+
+/* Gradient background */
+.bg-gradient-pink {
+    background: linear-gradient(180deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
+}
+
+/* Card hover effect */
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
