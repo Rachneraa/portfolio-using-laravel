@@ -2,10 +2,17 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Fadilla Tasya Wanda">
-    <title>{{ $title ?? 'Portfolio' }} - Fadilla Tasya Wanda</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio Hanif Ibarahim">
+    <meta name="theme-color" content="#A75F37">
+    <title>{{ $title ?? 'Portfolio' }} - Hanif Ibarahim</title>
+
+    <!-- Polyfill for legacy/edge browsers -->
+    <script
+        src="https://polyfill.io/v3/polyfill.min.js?features=default,fetch,Promise,Array.prototype.includes,Object.entries"></script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
@@ -17,20 +24,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- TimelineJS CSS -->
+
+    <!-- TimelineJS CSS (needed) -->
     <link title="timeline-styles" rel="stylesheet"
         href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
-
-    <!-- AOS CSS -->
+    <!-- AOS CSS (needed) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- SweetAlert2 CSS -->
+    <!-- SweetAlert2 CSS (needed) -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
+    <!-- Main App CSS/JS (pastikan hanya import yang dipakai) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
-        /* Apply Poppins but exclude TimelineJS icons */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body,
         nav,
         footer,
@@ -39,14 +49,18 @@
         p,
         span:not(.tl-icon),
         a,
-        h1, h2, h3, h4, h5, h6,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
         button,
         input,
         textarea {
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Ensure TimelineJS icons use their own font */
         .tl-slidenav-icon,
         .tl-icon,
         .tl-menubar-button,
@@ -54,14 +68,13 @@
             font-family: 'tl-icons' !important;
         }
 
-        /* Loading Screen */
         .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
+            background: linear-gradient(135deg, #F2E7DD 0%, #F2D6CE 50%, #D9B99F 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -77,8 +90,8 @@
         .spinner {
             width: 50px;
             height: 50px;
-            border: 4px solid rgba(236, 72, 153, 0.2);
-            border-top-color: #ec4899;
+            border: 4px solid rgba(167, 95, 55, 0.2);
+            border-top-color: #A75F37;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -89,7 +102,6 @@
             }
         }
 
-        /* Page Transition */
         .page-content {
             opacity: 1;
             transition: opacity 0.3s ease-in-out;
@@ -101,32 +113,42 @@
     </style>
 </head>
 
-<body class="bg-gradient-pink min-h-screen">
+<body class="bg-[#F2E7DD] min-h-screen">
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="spinner"></div>
     </div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#F2E7DD]/80 backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-2">
-                    <span class="text-xl font-bold text-pink-500">🌸 FTW</span>
+                    <!-- hi Logo SVG -->
+                    <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Letter h -->
+                        <rect x="5" y="5" width="18" height="18" rx="2" fill="#C9A868" />
+                        <rect x="5" y="25" width="18" height="55" rx="2" fill="#C9A868" />
+                        <path d="M23 45 Q40 45 40 60 L40 80 L58 80 L58 55 Q58 35 23 35 L23 45Z" fill="#C9A868" />
+                        <!-- Letter i -->
+                        <circle cx="75" cy="14" r="12" fill="#C9A868" />
+                        <rect x="63" y="35" width="24" height="45" rx="2" fill="#C9A868" />
+                    </svg>
                 </a>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/#home" class="font-semibold text-gray-700 hover:text-pink-500 transition">Home</a>
-                    <a href="/#about" class="font-semibold text-gray-700 hover:text-pink-500 transition">About</a>
-                    <a href="/#projects" class="font-semibold text-gray-700 hover:text-pink-500 transition">Portfolio</a>
-                    <a href="/#contact" class="font-semibold text-gray-700 hover:text-pink-500 transition">Contact</a>
+                    <a href="/#home" class="font-semibold text-[#292421] hover:text-[#A75F37] transition">Home</a>
+                    <a href="/#about" class="font-semibold text-[#292421] hover:text-[#A75F37] transition">About</a>
+                    <a href="/#projects"
+                        class="font-semibold text-[#292421] hover:text-[#A75F37] transition">Portfolio</a>
+                    <a href="/#contact" class="font-semibold text-[#292421] hover:text-[#A75F37] transition">Contact</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-pink-100 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-[#F2D6CE] transition">
+                    <svg class="w-6 h-6 text-[#292421]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -135,15 +157,16 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div id="mobile-menu" class="hidden md:hidden bg-[#F2E7DD] border-t border-[#D9B99F]">
             <div class="px-4 py-3 space-y-2">
-                <a href="/#home" class="block py-2 font-semibold text-gray-700 hover:text-pink-500 transition">Home</a>
+                <a href="/#home"
+                    class="block py-2 font-semibold text-[#292421] hover:text-[#A75F37] transition">Home</a>
                 <a href="/#about"
-                    class="block py-2 font-semibold text-gray-700 hover:text-pink-500 transition">About</a>
+                    class="block py-2 font-semibold text-[#292421] hover:text-[#A75F37] transition">About</a>
                 <a href="/#projects"
-                    class="block py-2 font-semibold text-gray-700 hover:text-pink-500 transition">Portfolio</a>
+                    class="block py-2 font-semibold text-[#292421] hover:text-[#A75F37] transition">Portfolio</a>
                 <a href="/#contact"
-                    class="block py-2 font-semibold text-gray-700 hover:text-pink-500 transition">Contact</a>
+                    class="block py-2 font-semibold text-[#292421] hover:text-[#A75F37] transition">Contact</a>
             </div>
         </div>
     </nav>
@@ -154,16 +177,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-pink-200 py-8">
+    <footer class="bg-[#D9B99F] py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-xl font-bold text-pink-600 mb-4">Fadilla Tasya Wanda</h3>
+            <h3 class="text-xl font-bold text-[#A75F37] mb-4">Hanif Ibarahim</h3>
 
             <!-- Footer Navigation -->
             <div class="flex justify-center gap-6 mb-6">
-                <a href="/#about" class="text-gray-700 hover:text-pink-600 transition">About</a>
-                <a href="/#skills" class="text-gray-700 hover:text-pink-600 transition">Skills</a>
-                <a href="/#experience" class="text-gray-700 hover:text-pink-600 transition">Experience</a>
-                <a href="/#contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
+                <a href="/#about" class="text-[#292421] hover:text-[#A75F37] transition">About</a>
+                <a href="/#skills" class="text-[#292421] hover:text-[#A75F37] transition">Skills</a>
+                <a href="/#experience" class="text-[#292421] hover:text-[#A75F37] transition">Experience</a>
+                <a href="/#contact" class="text-[#292421] hover:text-[#A75F37] transition">Contact</a>
             </div>
 
             <!-- Social Media Icons -->
@@ -179,64 +202,35 @@
                 </div>
             @endif
 
-            <p class="text-gray-600 text-sm">&copy; {{ date('Y') }} Fadilla Tasya Wanda. All rights reserved.</p>
+            <p class="text-[#292421]/70 text-sm">&copy; {{ date('Y') }} Hanif Ibarahim. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- TimelineJS Script -->
-    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
-    <!-- AOS Script -->
+    <!-- TimelineJS Script (needed) -->
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+    <!-- AOS Script (needed) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 600,
-            easing: 'ease-out',
-            once: true
-        });
-    </script>
-
-    <script>
+        AOS.init({ duration: 600, easing: 'ease-out', once: true });
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
-
         // Loading Screen Handler
         const loadingScreen = document.getElementById('loading-screen');
         const pageContent = document.getElementById('page-content');
-
-        // Hide loading screen when page is fully loaded
-        window.addEventListener('load', function () {
-            loadingScreen.classList.add('hidden');
-        });
-
-        // Page transition for internal links
+        window.addEventListener('load', function () { loadingScreen.classList.add('hidden'); });
         document.addEventListener('click', function (e) {
             const link = e.target.closest('a');
-
-            if (link && link.href && !link.href.startsWith('#') && !link.href.includes('#') &&
-                link.hostname === window.location.hostname &&
-                !link.hasAttribute('download') &&
-                link.target !== '_blank') {
-
+            if (link && link.href && !link.href.startsWith('#') && !link.href.includes('#') && link.hostname === window.location.hostname && !link.hasAttribute('download') && link.target !== '_blank') {
                 e.preventDefault();
-
-                // Fade out content
                 pageContent.classList.add('fade-out');
-
-                // Show loading screen
                 loadingScreen.classList.remove('hidden');
-
-                // Navigate after animation
-                setTimeout(function () {
-                    window.location.href = link.href;
-                }, 300);
+                setTimeout(function () { window.location.href = link.href; }, 300);
             }
         });
-
-        // Handle browser back/forward buttons
         window.addEventListener('pageshow', function (event) {
             if (event.persisted) {
                 loadingScreen.classList.add('hidden');
@@ -244,8 +238,7 @@
             }
         });
     </script>
-
-    <!-- SweetAlert2 JS -->
+    <!-- SweetAlert2 JS (needed) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @stack('scripts')

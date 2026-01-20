@@ -45,6 +45,7 @@ Portfolio adalah website personal yang menampilkan profil, keahlian, pengalaman,
 | ---------------- | ----------------------------------------------------------- |
 | **Hero**         | Section utama dengan foto, nama, deskripsi, dan tombol aksi |
 | **About**        | Tentang saya dengan daftar item (pendidikan, hobi, dll)     |
+| **Sekolah**      | Riwayat sekolah                                             |
 | **Skills**       | Keahlian dengan icon/emoji dan animasi marquee              |
 | **Experience**   | Pengalaman kerja/organisasi dengan timeline interaktif      |
 | **Projects**     | Daftar proyek dengan detail, galeri, dan tags               |

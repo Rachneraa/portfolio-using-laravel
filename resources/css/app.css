@@ -9,11 +9,25 @@
 @theme {
     --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    
+    /* Custom Color Palette (Pink Theme) */
+    --color-primary: #F283AF; /* Tickle Me Pink */
+    --color-primary-hover: #C43670; /* Raspberry Rose */
+    --color-secondary: #F3CC97; /* Sunset */
+    --color-accent: #C43670; /* Raspberry Rose */
+    --color-accent-light: #FBD9E5; /* Blush/Cherry Blossom */
+    --color-text: #C43670; /* Raspberry Rose for headings */
+    --color-text-light: #F283AF; /* Tickle Me Pink for subtext */
+    --color-border: #F283AF; /* Tickle Me Pink */
+    --color-bg-main: #FBF4EB; /* Champagne */
+    --color-bg-alt: #FBD9E5; /* Blush/Cherry Blossom */
 }
 
 /* Apply Poppins but exclude TimelineJS */
 body {
     font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    background-color: var(--color-bg-main);
+    color: var(--color-text);
 }
 
 /* Ensure TimelineJS icons work properly */
@@ -39,9 +53,10 @@ body {
     will-change: transform;
 }
 
-/* Gradient background */
-.bg-gradient-pink {
-    background: linear-gradient(180deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
+/* Gradient background - Updated */
+/* Pink gradient background */
+.bg-gradient-warm {
+    background: linear-gradient(180deg, #FBF4EB 0%, #FBD9E5 50%, #F283AF 100%);
 }
 
 /* Card hover effect */
@@ -51,5 +66,22 @@ body {
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(41, 36, 33, 0.1), 0 10px 10px -5px rgba(41, 36, 33, 0.04);
+}
+
+/* Custom button styles */
+/* Button Styles */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Focus ring */
+/* Focus ring */
+.focus-ring-custom:focus {
+    ring-color: var(--color-primary);
 }

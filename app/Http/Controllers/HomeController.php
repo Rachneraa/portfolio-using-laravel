@@ -24,6 +24,7 @@ class HomeController extends Controller
         $projects = Project::active()->orderBy('order')->take(6)->get();
         $experiences = Experience::active()->orderBy('start_date', 'desc')->get();
         $socialMedia = SocialMedia::active()->orderBy('order')->get();
+        $sekolahs = \App\Models\Sekolah::where('aktif', true)->orderBy('tahun_lulus', 'desc')->orderBy('tahun_masuk', 'desc')->get();
 
         return view('home', compact(
             'hero',
@@ -32,7 +33,8 @@ class HomeController extends Controller
             'skillsRow2',
             'projects',
             'experiences',
-            'socialMedia'
+            'socialMedia',
+            'sekolahs'
         ));
     }
 

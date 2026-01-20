@@ -48,7 +48,7 @@ class SocialMediaResource extends Resource
                             ->options(SocialMedia::getAvailableIcons())
                             ->required()
                             ->live()
-                            ->afterStateUpdated(fn(Set $set, $state) => $set('name', SocialMedia::getAvailableIcons()[$state] ?? '')),
+                            ->afterStateUpdated(fn($state, $set) => $set('name', SocialMedia::getAvailableIcons()[$state] ?? '')),
                         TextInput::make('name')
                             ->required()
                             ->maxLength(255),
