@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Models\Project;
+use App\Models\ProjectImage;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -11,6 +12,7 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Repeater;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -63,16 +65,8 @@ class ProjectResource extends Resource
                             ->image()
                             ->disk('public')
                             ->directory('projects')
-                            ->imageEditor(),
-                        FileUpload::make('gallery')
-                            ->label('Gallery (Maks 3)')
-                            ->image()
-                            ->disk('public')
-                            ->directory('projects/gallery')
-                            ->multiple()
-                            ->maxFiles(3)
-                            ->reorderable()
-                            ->imageEditor(),
+                            ->imageEditor()
+                            ->previewable(),
                         TextInput::make('link')
                             ->label('Live Link')
                             ->url()
@@ -91,6 +85,45 @@ class ProjectResource extends Resource
                             ->label('Active')
                             ->default(true),
                     ])->columns(2),
+
+                Section::make('Project Images (untuk Slider)')
+                    ->description('Upload gambar dengan format apapun. Sistem otomatis compress ke WebP dan detect aspect ratio')
+                    ->schema([
+                        Repeater::make('images')
+                            ->relationship()
+                            ->schema([
+                                FileUpload::make('image_path')
+                                    ->label('Image')
+                                    ->image()
+                                    ->disk('public')
+                                    ->directory('projects/images')
+                                    ->imageEditor()
+                                    ->previewable()
+                                    ->required(),
+                                TextInput::make('aspect_ratio')
+                                    ->label('Aspect Ratio (Auto)')
+                                    ->disabled()
+                                    ->dehydrated(),
+                                TextInput::make('width')
+                                    ->label('Width (px)')
+                                    ->numeric()
+                                    ->disabled()
+                                    ->dehydrated(),
+                                TextInput::make('height')
+                                    ->label('Height (px)')
+                                    ->numeric()
+                                    ->disabled()
+                                    ->dehydrated(),
+                                TextInput::make('order')
+                                    ->numeric()
+                                    ->default(0)
+                                    ->hidden(),
+                            ])
+                            ->columns(2)
+                            ->reorderable('order')
+                            ->collapsible()
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 
@@ -148,3 +181,4 @@ class ProjectResource extends Resource
         ];
     }
 }
+

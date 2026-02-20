@@ -3,7 +3,9 @@
 namespace App\Observers;
 
 use App\Models\Project;
+use App\Models\ProjectImage;
 use App\Services\ImageOptimizer;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectObserver
 {
@@ -21,4 +23,16 @@ class ProjectObserver
             );
         }
     }
+
+    public function deleting(Project $project): void
+    {
+        // Delete all associated ProjectImages and their files
+        foreach ($project->images as $image) {
+            if ($image->image_path && Storage::disk('public')->exists($image->image_path)) {
+                Storage::disk('public')->delete($image->image_path);
+            }
+            $image->delete();
+        }
+    }
 }
+

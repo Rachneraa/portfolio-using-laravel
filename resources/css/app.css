@@ -10,39 +10,36 @@
     --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
     
-    /* Custom Color Palette (Pink Theme) */
-    --color-primary: #F283AF; /* Tickle Me Pink */
-    --color-primary-hover: #C43670; /* Raspberry Rose */
-    --color-secondary: #F3CC97; /* Sunset */
-    --color-accent: #C43670; /* Raspberry Rose */
-    --color-accent-light: #FBD9E5; /* Blush/Cherry Blossom */
-    --color-text: #C43670; /* Raspberry Rose for headings */
-    --color-text-light: #F283AF; /* Tickle Me Pink for subtext */
-    --color-border: #F283AF; /* Tickle Me Pink */
-    --color-bg-main: #FBF4EB; /* Champagne */
-    --color-bg-alt: #FBD9E5; /* Blush/Cherry Blossom */
+    --color-primary: #F283AF;
+    --color-primary-hover: #C43670;
+    --color-secondary: #F3CC97;
+    --color-accent: #C43670;
+    --color-accent-light: #FBD9E5;
+    --color-text: #C43670;
+    --color-text-light: #F283AF;
+    --color-border: #F283AF;
+    --color-bg-main: #FBF4EB;
+    --color-bg-alt: #FBD9E5;
 }
 
-/* Apply Poppins but exclude TimelineJS */
 body {
     font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
     background-color: var(--color-bg-main);
     color: var(--color-text);
 }
 
-/* Ensure TimelineJS icons work properly */
-.tl-slidenav-icon,
-.tl-icon,
-.tl-menubar-button,
-[class*="tl-icon"] {
-    font-family: 'tl-icons' !important;
-}
-
-/* Marquee animation for skills */
+/* Marquee */
 .marquee-wrapper {
     cursor: grab;
     user-select: none;
     -webkit-user-select: none;
+    position: relative;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden !important;
+    clip-path: inset(0px);
+    -webkit-clip-path: inset(0px);
+    contain: layout style paint;
 }
 
 .marquee-wrapper:active {
@@ -51,37 +48,81 @@ body {
 
 .marquee-track {
     will-change: transform;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    filter: none;
+    -webkit-filter: none;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
-/* Gradient background - Updated */
-/* Pink gradient background */
-.bg-gradient-warm {
-    background: linear-gradient(180deg, #FBF4EB 0%, #FBD9E5 50%, #F283AF 100%);
+/* Skill items - dengan pseudo-element */
+.skill-item {
+    position: relative !important;
+    background-color: transparent !important;
+    z-index: 1 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    transform: translateZ(0) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem 1.5rem !important;
+    margin: 0 0.75rem !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
 }
 
-/* Card hover effect */
+.skill-item::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-color: var(--skill-color, #F283AF) !important;
+    opacity: 0.35 !important;
+    border-radius: 9999px !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+}
+
+.skill-item img {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Project card */
 .project-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(41, 36, 33, 0.1), 0 10px 10px -5px rgba(41, 36, 33, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(242, 131, 175, 0.12), 0 10px 10px -5px rgba(243, 204, 151, 0.08);
 }
 
-/* Custom button styles */
-/* Button Styles */
-.btn-primary {
-    background-color: var(--color-primary);
-    color: white;
+/* Safari fixes */
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .marquee-wrapper {
+            clip-path: none !important;
+            -webkit-clip-path: none !important;
+        }
+    }
 }
 
-.btn-primary:hover {
-    background-color: var(--color-primary-hover);
-}
-
-/* Focus ring */
-/* Focus ring */
-.focus-ring-custom:focus {
-    ring-color: var(--color-primary);
+/* Nonaktifkan semua shadow di marquee */
+.marquee-wrapper *,
+.marquee-wrapper *::before,
+.marquee-wrapper *::after {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
 }

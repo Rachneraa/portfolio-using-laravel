@@ -6,14 +6,17 @@ use App\Models\About;
 use App\Models\Experience;
 use App\Models\Hero;
 use App\Models\Project;
+use App\Models\ProjectImage;
 use App\Models\Skill;
 use App\Observers\AboutObserver;
 use App\Observers\ExperienceObserver;
 use App\Observers\HeroObserver;
 use App\Observers\ProjectObserver;
+use App\Observers\ProjectImageObserver;
 use App\Observers\SkillObserver;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Storage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         About::observe(AboutObserver::class);
         Skill::observe(SkillObserver::class);
         Project::observe(ProjectObserver::class);
+        ProjectImage::observe(ProjectImageObserver::class);
         Experience::observe(ExperienceObserver::class);
 
         // Force HTTPS when using ngrok or production

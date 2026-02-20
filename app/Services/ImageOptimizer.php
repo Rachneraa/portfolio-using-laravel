@@ -80,4 +80,58 @@ class ImageOptimizer
             default => ['width' => null, 'height' => null],
         };
     }
+
+    /**
+     * Get image dimensions and detect aspect ratio
+     */
+    public static function getImageDimensions(string $path, string $disk = 'public'): ?array
+    {
+        $fullPath = Storage::disk($disk)->path($path);
+
+        if (!file_exists($fullPath)) {
+            return null;
+        }
+
+        try {
+            $image = Image::read($fullPath);
+            $width = $image->width();
+            $height = $image->height();
+
+            $aspectRatio = self::calculateAspectRatio($width, $height);
+
+            return [
+                'width' => $width,
+                'height' => $height,
+                'aspect_ratio' => $aspectRatio,
+            ];
+        } catch (\Exception $e) {
+            report($e);
+            return null;
+        }
+    }
+
+    /**
+     * Calculate aspect ratio as simplified string (e.g., "16:9", "9:16")
+     */
+    public static function calculateAspectRatio(int $width, int $height): string
+    {
+        // Find GCD to simplify the ratio
+        $gcd = function ($a, $b) {
+            return $b === 0 ? $a : ($b)($a % $b, $b);
+        };
+
+        $divisor = self::gcd($width, $height);
+        $w = intval($width / $divisor);
+        $h = intval($height / $divisor);
+
+        return "{$w}:{$h}";
+    }
+
+    /**
+     * Calculate GCD (Greatest Common Divisor)
+     */
+    private static function gcd($a, $b): int
+    {
+        return $b === 0 ? $a : self::gcd($b, $a % $b);
+    }
 }

@@ -52,6 +52,7 @@ class HomeController extends Controller
             abort(404);
         }
 
+        $project->load('images');
         $socialMedia = SocialMedia::active()->orderBy('order')->get();
 
         return view('project-detail', compact('project', 'socialMedia'));

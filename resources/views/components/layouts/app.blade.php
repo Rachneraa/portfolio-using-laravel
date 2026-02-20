@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio Hanif Ibarahim">
-    <meta name="theme-color" content="#A75F37">
-    <title>{{ $title ?? 'Portfolio' }} - Hanif Ibarahim</title>
+    <meta name="description" content="Portfolio Fadilla Tasya Wanda">
+    <meta name="theme-color" content="#F283AF">
+    <title>{{ $title ?? 'Portfolio' }} - Fadilla Tasya Wanda</title>
 
     <!-- Polyfill for legacy/edge browsers -->
     <script
@@ -74,7 +74,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #F2E7DD 0%, #F2D6CE 50%, #D9B99F 100%);
+            background: linear-gradient(135deg, #FBF4EB 0%, #FBD9E5 50%, #F283AF 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -90,8 +90,8 @@
         .spinner {
             width: 50px;
             height: 50px;
-            border: 4px solid rgba(167, 95, 55, 0.2);
-            border-top-color: #A75F37;
+            border: 4px solid rgba(242, 131, 175, 0.2);
+            border-top-color: #F283AF;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -113,14 +113,14 @@
     </style>
 </head>
 
-<body class="bg-[#F2E7DD] min-h-screen">
+<body class="bg-[#FBF4EB] min-h-screen">
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="spinner"></div>
     </div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#F2E7DD]/80 backdrop-blur-md shadow-sm">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#FBF4EB]/80 backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
@@ -128,12 +128,12 @@
                     <!-- hi Logo SVG -->
                     <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <!-- Letter h -->
-                        <rect x="5" y="5" width="18" height="18" rx="2" fill="#C9A868" />
-                        <rect x="5" y="25" width="18" height="55" rx="2" fill="#C9A868" />
-                        <path d="M23 45 Q40 45 40 60 L40 80 L58 80 L58 55 Q58 35 23 35 L23 45Z" fill="#C9A868" />
+                        <rect x="5" y="5" width="18" height="18" rx="2" fill="#F283AF" />
+                        <rect x="5" y="25" width="18" height="55" rx="2" fill="#F283AF" />
+                        <path d="M23 45 Q40 45 40 60 L40 80 L58 80 L58 55 Q58 35 23 35 L23 45Z" fill="#F283AF" />
                         <!-- Letter i -->
-                        <circle cx="75" cy="14" r="12" fill="#C9A868" />
-                        <rect x="63" y="35" width="24" height="45" rx="2" fill="#C9A868" />
+                        <circle cx="75" cy="14" r="12" fill="#F283AF" />
+                        <rect x="63" y="35" width="24" height="45" rx="2" fill="#F283AF" />
                     </svg>
                 </a>
 
@@ -157,7 +157,7 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#F2E7DD] border-t border-[#D9B99F]">
+        <div id="mobile-menu" class="hidden md:hidden bg-[#FBF4EB] border-t border-[#F283AF]">
             <div class="px-4 py-3 space-y-2">
                 <a href="/#home"
                     class="block py-2 font-semibold text-[#292421] hover:text-[#A75F37] transition">Home</a>
@@ -177,16 +177,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#D9B99F] py-8">
+    <footer class="bg-[#C43670] py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-xl font-bold text-[#A75F37] mb-4">Hanif Ibarahim</h3>
+            <h3 class="text-xl font-bold text-[#F3CC97] mb-4">Fadilla Tasya Wanda</h3>
 
             <!-- Footer Navigation -->
             <div class="flex justify-center gap-6 mb-6">
-                <a href="/#about" class="text-[#292421] hover:text-[#A75F37] transition">About</a>
-                <a href="/#skills" class="text-[#292421] hover:text-[#A75F37] transition">Skills</a>
-                <a href="/#experience" class="text-[#292421] hover:text-[#A75F37] transition">Experience</a>
-                <a href="/#contact" class="text-[#292421] hover:text-[#A75F37] transition">Contact</a>
+                <a href="/#about" class="text-[#FBF4EB] hover:text-[#F3CC97] transition">About</a>
+                <a href="/#skills" class="text-[#FBF4EB] hover:text-[#F3CC97] transition">Skills</a>
+                <a href="/#experience" class="text-[#FBF4EB] hover:text-[#F3CC97] transition">Experience</a>
+                <a href="/#contact" class="text-[#FBF4EB] hover:text-[#F3CC97] transition">Contact</a>
             </div>
 
             <!-- Social Media Icons -->
@@ -195,14 +195,14 @@
                     @foreach($socialMedia as $social)
                         <a href="{{ $social->url }}" target="_blank" rel="noopener noreferrer"
                             class="w-10 h-10 rounded-full flex items-center justify-center transition hover:scale-110"
-                            style="background-color: {{ $social->color }}20; color: {{ $social->color }};">
+                            style="background-color: #F283AF20; color: #F3CC97;">
                             @include('components.social-icons.' . $social->icon)
                         </a>
                     @endforeach
                 </div>
             @endif
 
-            <p class="text-[#292421]/70 text-sm">&copy; {{ date('Y') }} Hanif Ibarahim. All rights reserved.</p>
+            <p class="text-[#C43670]/70 text-sm">&copy; {{ date('Y') }} Fadilla Tasya Wanda. All rights reserved.</p>
         </div>
     </footer>
 

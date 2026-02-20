@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .foto-wrapper {
+  display: inline-block;   /* ← solusi utama */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.foto-wrapper img {
+  display: block;
+  width: auto;            /* lebar asli */
+  height: auto;
+  max-width: 100%;        /* tetap responsif */
+}
+    </style>
+</head>
+<body>
+    <div class="card">
+  <div class="foto-wrapper">
+    <img src="storage/app/public/projects/gallery/01KG5197Y5TSX0NXQY91W9BJZV.png" alt="Foto">
+  </div>
+  <p>Nama User</p>
+</div>
+</body>
+</html>
